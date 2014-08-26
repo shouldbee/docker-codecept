@@ -21,7 +21,7 @@ To further ease running, it's recommended to set up a much shorter function so t
 
 ```
 $ codecept () {
-  docker run -it --rm -v `pwd`:/wd -w /wd shouldbee/codecept $@
+  docker run -it --rm --net host -v `pwd`:/wd -w /wd shouldbee/codecept $@
 }
 ```
 
