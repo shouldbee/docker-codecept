@@ -17,16 +17,18 @@ This docker image is available as an automated build on [the docker registry hub
 $ docker run shouldbee/codecept
 ```
 
-To further ease running, it's recommended to set up a much shorter `alias` so that you can easily execute it as just `codecept`:
+To further ease running, it's recommended to set up a much shorter function so that you can easily execute it as just `codecept`:
 
-```console
-$ alias codecept='docker run -it --rm shouldbee/codecept'
+```
+$ codecept () {
+  docker run -it --rm -v `pwd`:/wd -w /wd shouldbee/codecept $@
+}
 ```
 
-This will create a temporary alias. In order to make it persist reboots, you can append this exact line to your `~/.bashrc` (or similar) like this:
+This will create a temporary function. In order to make it persist reboots, you can append this exact line to your `~/.bashrc` (or similar) like this:
 
 ```console
-$ alias codecept >> ~/.bashrc
+$ declare -f codecept >> ~/.bashrc
 ```
 
 ## Usage
